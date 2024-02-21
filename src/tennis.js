@@ -15,16 +15,8 @@ function isTie(pointsPlayer1, pointsPlayer2) {
 }
 
 function getTieScores(pointsPlayer1) {
-  switch (pointsPlayer1) {
-    case 0:
-      return 'Love-All';
-    case 1:
-      return 'Fifteen-All';
-    case 2:
-      return 'Thirty-All';
-    default:
-      return 'Deuce';
-  }
+  let tieScores = ['Love-All', 'Fifteen-All','Thirty-All'];
+  return tieScores[pointsPlayer1] || 'Deuce';
 }
 
 function isAdvantageOrWin(pointsPlayer1, pointsPlayer2) {
