@@ -3,13 +3,16 @@
 function getScore(pointsPlayer1, pointsPlayer2) {
   if (isTie(pointsPlayer1, pointsPlayer2)) {
     return getTieScores(pointsPlayer1);
-  } else if (pointsPlayer1 >= 4 || pointsPlayer2 >= 4) {
+  } else if ((pointsPlayer1 >= 4 || pointsPlayer2 >= 4) && (pointsPlayer1 - pointsPlayer2 === 1 || pointsPlayer1 - pointsPlayer2 === -1)) {
     let minusResult = pointsPlayer1 - pointsPlayer2;
     if (minusResult === 1) {
       return 'Advantage player1';
     } else if (minusResult === -1) {
       return 'Advantage player2';
-    } else if (minusResult >= 2) {
+    }
+  } else if (pointsPlayer1 >= 4 || pointsPlayer2 >= 4) {
+    let minusResult = pointsPlayer1 - pointsPlayer2;
+    if (minusResult >= 2) {
       return 'Win for player1';
     } else {
       return 'Win for player2';
