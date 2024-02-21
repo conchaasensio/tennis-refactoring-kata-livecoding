@@ -14,7 +14,8 @@ function isTie(pointsPlayer1, pointsPlayer2) {
   return pointsPlayer1 === pointsPlayer2;
 }
 
-function getTieScores(pointsPlayer1, score = '') {
+function getTieScores(pointsPlayer1) {
+  let score;
   switch (pointsPlayer1) {
     case 0:
       score = 'Love-All';
