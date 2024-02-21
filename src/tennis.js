@@ -1,27 +1,10 @@
 'use strict';
 
-function isTie(pointsPlayer1, pointsPlayer2) {
-  return pointsPlayer1 === pointsPlayer2;
-}
-
 function getScore(pointsPlayer1, pointsPlayer2) {
   let score = '';
   let tempScore = 0;
   if (isTie(pointsPlayer1, pointsPlayer2)) {
-    switch (pointsPlayer1) {
-      case 0:
-        score = 'Love-All';
-        break;
-      case 1:
-        score = 'Fifteen-All';
-        break;
-      case 2:
-        score = 'Thirty-All';
-        break;
-      default:
-        score = 'Deuce';
-        break;
-    }
+    score = getTieScores(pointsPlayer1, score);
   } else if (pointsPlayer1 >= 4 || pointsPlayer2 >= 4) {
     let minusResult = pointsPlayer1 - pointsPlayer2;
     if (minusResult === 1) {
@@ -58,6 +41,28 @@ function getScore(pointsPlayer1, pointsPlayer2) {
     }
   }
 
+  return score;
+}
+
+function isTie(pointsPlayer1, pointsPlayer2) {
+  return pointsPlayer1 === pointsPlayer2;
+}
+
+function getTieScores(pointsPlayer1, score) {
+  switch (pointsPlayer1) {
+    case 0:
+      score = 'Love-All';
+      break;
+    case 1:
+      score = 'Fifteen-All';
+      break;
+    case 2:
+      score = 'Thirty-All';
+      break;
+    default:
+      score = 'Deuce';
+      break;
+  }
   return score;
 }
 
