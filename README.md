@@ -35,3 +35,4 @@ You need only report the score for the current game. Sets and Matches are out of
 
 ## Credits
 Thanks to [Emily Bache](https://github.com/emilybache) for crafting this kata.
+Thanks to [Codium](https://www.codium.team/) for allowing me to use the version that I performed in their "Working with legacy code" training. 
