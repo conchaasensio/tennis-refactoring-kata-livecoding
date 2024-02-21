@@ -36,7 +36,9 @@ function getAdvantageOrWinScores(pointsPlayer1, pointsPlayer2) {
   }
 }
 
-function getRegularScores(pointsPlayer1, pointsPlayer2, tempScore = '',score = '') {
+function getRegularScores(pointsPlayer1, pointsPlayer2) {
+  let score = '';
+  let tempScore = 0;
   for (let i = 1; i < 3; i++) {
     if (i === 1) {
       tempScore = pointsPlayer1;
