@@ -14,9 +14,9 @@ function isTie(pointsPlayer1, pointsPlayer2) {
   return pointsPlayer1 === pointsPlayer2;
 }
 
-function getTieScores(pointsPlayer1) {
+function getTieScores(pointsPlayers) {
   let tieScores = ['Love-All', 'Fifteen-All','Thirty-All'];
-  return tieScores[pointsPlayer1] || 'Deuce';
+  return tieScores[pointsPlayers] || 'Deuce';
 }
 
 function isAdvantageOrWin(pointsPlayer1, pointsPlayer2) {
