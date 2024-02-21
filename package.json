@@ -1,0 +1,30 @@
+{
+  "name": "tennis-refactoring-kata",
+  "version": "1.0.0",
+  "description": "Kata to practice refactoring techniques and detect bad smells with the safety of a test harness",
+  "main": " ",
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "coverage": "jest --coverage"
+  },
+  "author": "Concha Asensio",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "jest": "^27.5.1",
+    "jest-each": "^27.5.1"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs"
+        ]
+      }
+    }
+  }
+}

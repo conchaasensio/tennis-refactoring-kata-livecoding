@@ -1,0 +1,14 @@
+### Example user template template
+### Example user template
+
+# dependencies
+/node_modules
+
+#testing
+/coverage
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
