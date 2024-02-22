@@ -1,53 +1,60 @@
 'use strict';
 
-function getScore(pointsPlayer1, pointsPlayer2) {
-  if (isTie(pointsPlayer1, pointsPlayer2)) {
-    return getTieScores(pointsPlayer1);
-  } else if (isAdvantage(pointsPlayer1, pointsPlayer2)) {
-    return getAdvantageScores(pointsPlayer1, pointsPlayer2);
-  } else if (isWin(pointsPlayer1, pointsPlayer2)) {
-    return getWinScores(pointsPlayer1, pointsPlayer2);
+function getScore(m_score1, m_score2) {
+  let score = '';
+  let tempScore = 0;
+  if (m_score1 === m_score2) {
+    switch (m_score1) {
+      case 0:
+        score = 'Love-All';
+        break;
+      case 1:
+        score = 'Fifteen-All';
+        break;
+      case 2:
+        score = 'Thirty-All';
+        break;
+      default:
+        score = 'Deuce';
+        break;
+    }
+  } else if (m_score1 >= 4 || m_score2 >= 4) {
+    let minusResult = m_score1 - m_score2;
+    if (minusResult === 1) {
+      score = 'Advantage player1';
+    } else if (minusResult === -1) {
+      score = 'Advantage player2';
+    } else if (minusResult >= 2) {
+      score = 'Win for player1';
+    } else {
+      score = 'Win for player2';
+    }
   } else {
-    return getRegularScores(pointsPlayer1, pointsPlayer2);
+    for (let i = 1; i < 3; i++) {
+      if (i === 1) {
+        tempScore = m_score1;
+      } else {
+        score += '-';
+        tempScore = m_score2;
+      }
+      switch (tempScore) {
+        case 0:
+          score += 'Love';
+          break;
+        case 1:
+          score += 'Fifteen';
+          break;
+        case 2:
+          score += 'Thirty';
+          break;
+        case 3:
+          score += 'Forty';
+          break;
+      }
+    }
   }
-}
 
-function isTie(pointsPlayer1, pointsPlayer2) {
-  return pointsPlayer1 === pointsPlayer2;
-}
-
-function getTieScores(pointsPlayers) {
-  let tieScores = ['Love-All', 'Fifteen-All','Thirty-All'];
-  return tieScores[pointsPlayers] || 'Deuce';
-}
-
-function winningPlayer(pointsPlayer1, pointsPlayer2) {
-  return pointsPlayer1 > pointsPlayer2 ? 'player1' : 'player2';
-
-}
-
-function isAdvantage(pointsPlayer1, pointsPlayer2) {
-  return (pointsPlayer1 >= 4 || pointsPlayer2 >= 4) &&
-      (pointsPlayer1 - pointsPlayer2 === 1 || pointsPlayer1 - pointsPlayer2 ===
-          -1);
-}
-
-function getAdvantageScores(pointsPlayer1, pointsPlayer2) {
-  return 'Advantage ' + winningPlayer(pointsPlayer1, pointsPlayer2);
-}
-
-function isWin(pointsPlayer1, pointsPlayer2) {
-  return pointsPlayer1 >= 4 || pointsPlayer2 >= 4;
-}
-
-function getWinScores(pointsPlayer1, pointsPlayer2) {
-  return 'Win for ' + winningPlayer(pointsPlayer1, pointsPlayer2);
-}
-
-function getRegularScores(pointsPlayer1, pointsPlayer2) {
-  let regularScores = ['Love', 'Fifteen', 'Thirty', 'Forty'];
-
-  return regularScores[pointsPlayer1] + '-' + regularScores[pointsPlayer2];
+  return score;
 }
 
 export default getScore;
